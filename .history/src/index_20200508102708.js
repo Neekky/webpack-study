@@ -4,10 +4,9 @@
 // img.src = src;
 // document.body.appendChild(img);
 var a = require('./live2.js');
-console.log('试')
 
 
-require.ensure(["./live1.js"], function(require) {
-    var asd = require("./live1.js");
-    // ...
-}, 'tips');
+// require.ensure(["./live1.js"], function(require) {
+//     var asd = require("./live1.js");
+//     // ...
+// }, 'tips');
