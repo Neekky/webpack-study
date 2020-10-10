@@ -5,17 +5,22 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode=development --watch",
+    "devServer": "npx webpack-dev-server",
     "build": "webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "file-loader": "^6.1.1",
+    "url-loader": "^4.1.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "clean-webpack-plugin": "^3.0.0",
-    "html-webpack-plugin": "^4.3.0"
+    "copy-webpack-plugin": "^6.0.1",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack-dev-server": "^3.11.0"
   }
 }

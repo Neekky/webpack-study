@@ -36,7 +36,7 @@
 /******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 	// Promise = chunk loading, 0 = chunk loaded
 /******/ 	var installedChunks = {
-/******/ 		"main": 0
+/******/ 		"index": 0
 /******/ 	};
 /******/
 /******/
@@ -201,14 +201,27 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/assets/pic/webpack.png":
+/*!************************************!*\
+  !*** ./src/assets/pic/webpack.png ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"52b6084f031c0c5f1354db7041c64a46.png\");\n\n//# sourceURL=webpack:///./src/assets/pic/webpack.png?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("// var src = require(\"./assets/pic/webpack.png\")\n// console.log(src);\n// var img = document.createElement(\"img\")\n// img.src = src;\n// document.body.appendChild(img);\nvar a = __webpack_require__(/*! ./live2.js */ \"./src/live2.js\");\nconsole.log('试')\n\n\n__webpack_require__.e(/*! require.ensure | tips */ \"tips\").then((function(require) {\n    var asd = __webpack_require__(/*! ./live1.js */ \"./src/live1.js\");\n    // ...\n}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_pic_webpack_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/pic/webpack.png */ \"./src/assets/pic/webpack.png\");\n// var src = require(\"./assets/pic/webpack.png\")\n// console.log(src);\n// var img = document.createElement(\"img\")\n// img.src = src;\n// document.body.appendChild(img);\nvar a = __webpack_require__(/*! ./live2.js */ \"./src/live2.js\");\n\n__webpack_require__.e(/*! require.ensure | tips */ \"tips\").then((function(require) {\n    var asd = __webpack_require__(/*! ./live1.js */ \"./src/live1.js\");\n}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);\n\nconst url = `/api/student/findAll?appkey=demo13_1545210570249`;\nfetch(url).then(resp => resp.json()).then(resp => {\n    console.log(resp);\n})\n\n//希望导入的模块结果是一个可用的资源路径\n\n// const png = require('./assets/pic/webpack.png').default;\nconsole.log(_assets_pic_webpack_png__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\nvar img = document.createElement(\"img\");\nimg.src = _assets_pic_webpack_png__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\ndocument.body.appendChild(img);\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
