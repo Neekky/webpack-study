@@ -21,3 +21,5 @@ console.log(png);
 var img = document.createElement("img");
 img.src = png;
 document.body.appendChild(img);
+
+let test = 'pre.caibeike.net/1232133'

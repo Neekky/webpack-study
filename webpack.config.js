@@ -2,6 +2,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FileListPlugin = require('./src/plugins/FileListPlugin');
 const CopyPlugin = require('copy-webpack-plugin');
+// const FindPre = require('./src/loaders/find-pre-loader');
 var path = require("path")
 
 module.exports = {
@@ -15,6 +16,7 @@ module.exports = {
         filename: 'scripts/[name].[chunkhash:6].js',
         chunkFilename: '[name].[chunkhash:5].chunk.js',
         path: path.resolve(__dirname, "dist"), //必须配置一个绝对路径，表示资源放置的文件夹，默认是dist
+        publicPath: '/'
         // path: path.resolve(__dirname, "target"), 
     },
     module: {
@@ -25,7 +27,9 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 100
+                            limit: 100,
+                            name: 'imgs/[name].[hash:5].[ext]',
+                            publicPath: '../'
                         }
                     },
                     // {
@@ -58,6 +62,12 @@ module.exports = {
                 use: [{
                     loader: "./src/loaders/style-loader.js"
                 }]
+            },
+            {
+                test: /\.(js|css)$/,
+                use: [{
+                    loader: "./src/loaders/find-pre-loader.js"
+                }]
             }
         ]
     },
@@ -65,7 +75,7 @@ module.exports = {
         port: 5688,
         open: true,
         index: 'main.html',
-        openPage: 'index.html',
+        openPage: 'html/index.html',
         proxy: { //代理规则
             "/api/student": {
                 target: "http://open.duyiedu.com",
@@ -80,28 +90,27 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "./public/index.html",
-            filename: "index.html",
+            filename: "html/index.html",
             chunks: ["index"],
             // title: '我信了你的邪'
         }),
         new HtmlWebpackPlugin({
-            // template: "./public/index.html",
-            filename: "main.html",
+            template: "./public/index.html",
+            filename: "html/main.html",
             chunks: ["main"],
             title: '我信了你的邪'
         }),
         new HtmlWebpackPlugin({
-            template: "./public/index.html",
-            filename: "live.html",
+            // template: "./public/index.html",
+            filename: "html/live.html",
             chunks: ["live"],
             // title: '我信了你的邪'
         }),
-        new CopyPlugin({
-            patterns: [
-                { from: "./public", to: "./" }
-            ]
-        }),
+        // new CopyPlugin({
+        //     patterns: [
+        //         { from: "./public", to: "./" }
+        //     ]
+        // }),
         new FileListPlugin("文件列表.md"),
-
     ]
 }
