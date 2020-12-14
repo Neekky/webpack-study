@@ -1,7 +1,10 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {
+    CleanWebpackPlugin
+} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FileListPlugin = require('./src/plugins/FileListPlugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require("webpack")
 // const FindPre = require('./src/loaders/find-pre-loader');
 var path = require("path")
 
@@ -16,15 +19,13 @@ module.exports = {
         filename: 'scripts/[name].[chunkhash:6].js',
         chunkFilename: '[name].[chunkhash:5].chunk.js',
         path: path.resolve(__dirname, "dist"), //必须配置一个绝对路径，表示资源放置的文件夹，默认是dist
-        publicPath: '/'
+        publicPath: '/webpack-study/dist'
         // path: path.resolve(__dirname, "target"), 
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(png|jpe?g|gif)$/i,
-                use: [
-                    {
+                use: [{
                         loader: 'url-loader',
                         options: {
                             limit: 100,
@@ -112,5 +113,23 @@ module.exports = {
         //     ]
         // }),
         new FileListPlugin("文件列表.md"),
+        new webpack.DefinePlugin({
+            PI: `Math.PI`, // PI = Math.PI
+            VERSION: `"1.0.0"`, // VERSION = "1.0.0"
+            DOMAIN: JSON.stringify("duyi.com")
+        }),
+        new webpack.BannerPlugin({
+            banner: `
+            hash:[hash]
+            chunkhash:[chunkhash]
+            name:[name]
+            author:yuanjin
+            corporation:duyi
+            `
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            _: 'lodash'
+        })
     ]
 }
