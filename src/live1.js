@@ -7,4 +7,4 @@ console.log(VERSION,'VERSION')
 console.log(DOMAIN,'DOMAIN')
 
 console.log($('#item')); // <= 起作用
-console.log(_.drop([1, 2, 3], 2)); // <= 起作用
+console.log(_.drop([1, 2, 3], 2)); // <= 起作用    11
